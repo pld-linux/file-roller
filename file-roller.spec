@@ -98,13 +98,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/file-roller
+%attr(755,root,root) %{_libdir}/bonobo/*.so
+%{_libdir}/bonobo/*.la
+%{_libdir}/bonobo/servers/*.server
 %{_datadir}/applications/*
 %{_datadir}/file-roller
 %{_datadir}/application-registry/file-roller.applications
 %{_datadir}/mime-info/file-roller.*
-%{_libdir}/bonobo/*.so
-%{_libdir}/bonobo/*.la
-%{_libdir}/bonobo/servers/*.server
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/*

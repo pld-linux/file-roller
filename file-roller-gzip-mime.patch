@@ -1,0 +1,29 @@
+diff -Nuard file-roller-2.4.4.orig/file-roller.keys file-roller-2.4.4/file-roller.keys
+--- file-roller-2.4.4.orig/file-roller.keys	2004-01-26 12:31:55.000000000 +0100
++++ file-roller-2.4.4/file-roller.keys	2004-02-10 01:34:04.280397256 +0100
+@@ -64,6 +64,12 @@
+ 	short_list_application_ids_for_intermediate_user_level=file-roller
+ 	short_list_application_ids_for_advanced_user_level=file-roller
+ 
++application/gzip
++	icon_filename=gnome-compressed
++	short_list_application_ids_for_novice_user_level=file-roller
++	short_list_application_ids_for_intermediate_user_level=file-roller
++	short_list_application_ids_for_advanced_user_level=file-roller
++
+ application/x-bzip
+ 	icon_filename=gnome-compressed
+ 	short_list_application_ids_for_novice_user_level=file-roller
+diff -Nuard file-roller-2.4.4.orig/file-roller.mime file-roller-2.4.4/file-roller.mime
+--- file-roller-2.4.4.orig/file-roller.mime	2004-01-26 12:31:55.000000000 +0100
++++ file-roller-2.4.4/file-roller.mime	2004-02-10 01:34:12.569137176 +0100
+@@ -36,6 +36,9 @@
+ application/x-gzip
+ 	ext: gz
+ 
++application/gzip
++	ext: gz
++
+ application/x-bzip
+ 	ext: bz2 bz
+ 

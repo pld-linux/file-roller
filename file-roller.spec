@@ -5,7 +5,7 @@ Version:	2.1.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://prdownloads.sourceforge.net/fileroller/file-roller-2.1.1.tar.gz
+Source0:	http://prdownloads.sourceforge.net/fileroller/%{name}-%{version}.tar.gz
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf

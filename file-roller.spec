@@ -23,6 +23,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_prefix					/usr/X11R6
 %define		_mandir					%{_prefix}/man
 %define		_omf_dest_dir   %(scrollkeeper-config --omfdir)
+%define		_sysconfdir				/etc/X11/GNOME2/gconf/schemas
 
 %description
 File Roller is an archive manager for the GNOME environment. With File
@@ -69,18 +70,15 @@ rm -f missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure --disable-schemas-install
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	desktopdir=%{_applnkdir}/Utilities \
 	omf_dest_dir=%{_omf_dest_dir}/%{name}
-unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
 %find_lang %{name} --with-gnome
 
@@ -88,20 +86,20 @@ unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 rm -rf $RPM_BUILD_ROOT
 
 %post
-scrollkeeper-update
-GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" \
-%{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
+/usr/bin/scrollkeeper-update
+GCONF_CONFIG_SOURCE="" \
+%{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/*.schemas > /dev/null
 
 %postun -p /usr/bin/scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
-%config %{_sysconfdir}/gconf/schemas/*
 %attr(755,root,root) %{_bindir}/file-roller
-%{_applnkdir}/Utilities/file-roller.desktop
+%{_datadir}/applications/*
 %{_datadir}/file-roller
 %{_datadir}/application-registry/file-roller.applications
 %{_datadir}/mime-info/file-roller.*
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
+%{_sysconfdir}/*

@@ -1,80 +1,70 @@
-%define release 3
-%define prefix  /usr
-%define name	file-roller
-%define version 1.0
-
-Summary:	An archive manager for GNOME.
-Name:		%{name}
-Version:    	%{version}
-Release:	%{release}
-Copyright:	GPL
-Vendor:		GNOME
-URL:		http://fileroller.sourceforge.net
+Summary:	An archive manager for GNOME
+Name:		file-roller
+Version:	1.0
+Release:	1
+License:	GPL v2
 Group:		Applications/Archiving
-Source0:	%{name}-%{version}.tar.gz
-Packager:       Paolo Bacchilega <paolo.bacch@tin.it>
-BuildRoot:	%{_builddir}/%{name}-%{version}-root
-Requires:       glib >= 1.2.9
-Requires:       gtk+ >= 1.2.9
-Requires:	gnome-libs >= 1.2.0
-Requires:	gdk-pixbuf >= 0.9.0
-Requires:	libglade >= 0.14
-Requires:	oaf >= 0.6.5
-Requires:	bonobo >= 1.0.0
-BuildRequires:	glib-devel >= 1.2.9
-BuildRequires:	gtk+-devel >= 1.2.9
-BuildRequires:	gnome-libs-devel >= 1.2.0
+Source0:	http://prdownloads.sourceforge.net/fileroller/%{name}-%{version}.tar.gz
+URL:		http://fileroller.sourceforge.net
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	bonobo-devel >= 1.0.0
 BuildRequires:	gdk-pixbuf-devel >= 0.9.0
+BuildRequires:	gnome-libs-devel >= 1.2.0
 BuildRequires:	libglade-devel >= 0.14
 BuildRequires:	oaf-devel >= 0.6.5
-BuildRequires:	bonobo-devel >= 1.0.0
-Docdir:         %{prefix}/share/doc
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-File Roller is an archive manager for the GNOME environment. With File Roller
-you can : create and modify archives; view the content of an archive; view a 
-file contained in the archive; extract files from the archive.
-File Roller is only a front-end (a graphical interface) to various archiving 
-programs. The supported file types are :
-    * Tar archives uncompressed (.tar) or compressed with
-          * gzip (.tar.gz , .tgz)
-          * bzip (.tar.bz , .tbz)
-          * bzip2 (.tar.bz2 , .tbz2)
-          * compress (.tar.Z , .taz)
-          * lzop (.tar.lzo , .tzo)
-    * Zip archives (.zip)
-    * Jar archives (.jar , .ear , .war)
-    * Lha archives (.lzh)
-    * Rar archives (.rar)
-    * Single files compressed with gzip, bzip, bzip2, compress, lzop
+File Roller is an archive manager for the GNOME environment. With File
+Roller you can : create and modify archives; view the content of an
+archive; view a file contained in the archive; extract files from the
+archive. File Roller is only a front-end (a graphical interface) to
+various archiving programs. The supported file types are :
+    - Tar archives uncompressed (.tar) or compressed with
+          - gzip (.tar.gz , .tgz)
+          - bzip (.tar.bz , .tbz)
+          - bzip2 (.tar.bz2 , .tbz2)
+          - compress (.tar.Z , .taz)
+          - lzop (.tar.lzo , .tzo)
+    - Zip archives (.zip)
+    - Jar archives (.jar , .ear , .war)
+    - Lha archives (.lzh)
+    - Rar archives (.rar)
+    - Single files compressed with gzip, bzip, bzip2, compress, lzop
 
 %prep
-%setup 
+%setup -q
 
 %build
+rm -f missing
+aclocal
+autoconf
+automake -a -c -f
 %configure
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	desktopdir=%{_applnkdir}/Utilities
+
+gzip -9nf AUTHORS NEWS README
+
+%_find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(-,root,root)
-%{_bindir}/file-roller
-%{_bindir}/fr-document-viewer
-%{_datadir}/gnome/apps/Utilities/file-roller.desktop
-%{_datadir}/file-roller/glade/*.glade
-%{_datadir}/file-roller/icons/*.xpm
-%{_datadir}/file-roller/scripts/Add_to_archive
-%{_datadir}/file-roller/scripts/Extract_to
-%{_datadir}/file-roller/scripts/Extract_here
-%doc %{_datadir}/file-roller/scripts/README
-%{_datadir}/locale/*/LC_MESSAGES/file-roller.mo
+%files -f %{name}.lang
+%defattr(644,root,root,755)
+%doc *.gz
+%attr(755,root,root) %{_bindir}/file-roller
+%attr(755,root,root) %{_bindir}/fr-document-viewer
+%{_applnkdir}/Utilities/file-roller.desktop
+%{_datadir}/file-roller
 %{_datadir}/appliation-registry/file-roller.applications
 %{_datadir}/mime-info/file-roller.*
-%{_datadir}/pixmaps/file-roller.png
-%doc AUTHORS NEWS README COPYING
+%{_pixmapsdir}/file-roller.png

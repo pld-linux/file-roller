@@ -75,10 +75,12 @@ rm -f missing
 %install
 rm -rf $RPM_BUILD_ROOT
 
+export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	desktopdir=%{_applnkdir}/Utilities \
 	omf_dest_dir=%{_omf_dest_dir}/%{name}
+unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
 %find_lang %{name} --with-gnome
 

@@ -1,20 +1,28 @@
 Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Name:		file-roller
-Version:	1.0
+Version:	2.1.0
 Release:	1
 License:	GPL v2
-Group:		Applications/Archiving
-Source0:	http://prdownloads.sourceforge.net/fileroller/%{name}-%{version}.tar.gz
-URL:		http://fileroller.sourceforge.net
+Group:		X11/Applications
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
+URL:		http://www.gnome.org/
+BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	bonobo-devel >= 1.0.0
-BuildRequires:	gdk-pixbuf-devel >= 0.9.0
-BuildRequires:	gnome-libs-devel >= 1.2.0
-BuildRequires:	libglade-devel >= 0.14
-BuildRequires:	oaf-devel >= 0.6.5
+BuildRequires:	glib2-devel >= 2.0.0
+BuildRequires:	gnome-vfs2-devel >= 2.0.0
+BuildRequires:	gtk+2-devel >= 2.0.0
+BuildRequires:	libglade2-devel >= 2.0.0
+BuildRequires:	libgnome-devel >= 2.0.0
+BuildRequires:	libgnomeui-devel >= 2.0.0
+Requires(post,postun): scrollkeeper
+Requires(post): GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix					/usr/X11R6
+%define		_mandir					%{_prefix}/man
+%define		_omf_dest_dir   %(scrollkeeper-config --omfdir)
 
 %description
 File Roller is an archive manager for the GNOME environment. With File
@@ -58,7 +66,7 @@ w³a¶ciwych programów archiwizuj±cych. Obs³ugiwane typy plików to:
 
 %build
 rm -f missing
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
@@ -69,22 +77,30 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	desktopdir=%{_applnkdir}/Utilities
+	desktopdir=%{_applnkdir}/Utilities \
+	omf_dest_dir=%{_omf_dest_dir}/%{name}
 
-gzip -9nf AUTHORS NEWS README
-
-%find_lang %{name}
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+scrollkeeper-update
+GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" \
+%{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
+
+%postun
+scrollkeeper-update
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS NEWS README
+%config %{_sysconfdir}/gconf/schemas/*
 %attr(755,root,root) %{_bindir}/file-roller
-%attr(755,root,root) %{_bindir}/fr-document-viewer
 %{_applnkdir}/Utilities/file-roller.desktop
 %{_datadir}/file-roller
-%{_datadir}/appliation-registry/file-roller.applications
+%{_datadir}/application-registry/file-roller.applications
 %{_datadir}/mime-info/file-roller.*
 %{_pixmapsdir}/file-roller.png
+%{_omf_dest_dir}/%{name}

@@ -3,12 +3,13 @@ Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.8.3
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
 # Source0-md5:	841f0cc0eab979d98c25c16725c18745
 Patch0:		%{name}-gzip-mime.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.8.0.1
 BuildRequires:	autoconf
@@ -31,17 +32,17 @@ Roller you can: create and modify archives; view the content of an
 archive; view a file contained in the archive; extract files from the
 archive. File Roller is only a front-end (a graphical interface) to
 various archiving programs. The supported file types are:
-    - Tar archives uncompressed (.tar) or compressed with
-          - gzip (.tar.gz , .tgz)
-          - bzip (.tar.bz , .tbz)
-          - bzip2 (.tar.bz2 , .tbz2)
-          - compress (.tar.Z , .taz)
-          - lzop (.tar.lzo , .tzo)
-    - Zip archives (.zip)
-    - Jar archives (.jar , .ear , .war)
-    - Lha archives (.lzh)
-    - Rar archives (.rar)
-    - Single files compressed with gzip, bzip, bzip2, compress, lzop.
+- Tar archives uncompressed (.tar) or compressed with
+	- gzip (.tar.gz , .tgz)
+	- bzip (.tar.bz , .tbz)
+	- bzip2 (.tar.bz2 , .tbz2)
+	- compress (.tar.Z , .taz)
+	- lzop (.tar.lzo , .tzo)
+- Zip archives (.zip)
+- Jar archives (.jar , .ear , .war)
+- Lha archives (.lzh)
+- Rar archives (.rar)
+- Single files compressed with gzip, bzip, bzip2, compress, lzop.
 
 %description -l pl
 File Roller to zarz±dca archiwów dla ¶rodowiska GNOME. Przy jego
@@ -50,11 +51,11 @@ ogl±daæ poszczególne pliki zawarte w archiwum oraz rozpakowywaæ pliki
 z archiwów. File Roller jest tylko interfejsem graficznym do
 w³a¶ciwych programów archiwizuj±cych. Obs³ugiwane typy plików to:
 - archiwa tar nieskompresowane (.tar) lub skompresowane programami:
-  - gzip (.tar.gz, .tgz)
-  - bzip (.tar.bz, .tbz)
-  - bzip2 (.tar.bz2, .tbz2)
-  - compress (.tar.Z, .taz)
-  - lzop (.tar.lzo, .tzo)
+	- gzip (.tar.gz, .tgz)
+	- bzip (.tar.bz, .tbz)
+	- bzip2 (.tar.bz2, .tbz2)
+	- compress (.tar.Z, .taz)
+	- lzop (.tar.lzo, .tzo)
 - archiwa zip (.zip)
 - archiwa jar (.jar, .ear, .war)
 - archiwa lha (.lzh)
@@ -71,6 +72,7 @@ pacote e extrair os arquivos de um pacote.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing

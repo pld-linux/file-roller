@@ -1,5 +1,6 @@
 Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
+Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.1.2
 Release:	1
@@ -10,20 +11,18 @@ URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.0.0
 BuildRequires:	gnome-vfs2-devel >= 2.0.0
-BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnome-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.0.0
-Requires(post): scrollkeeper
-Requires(post): GConf2
+Requires(post):	scrollkeeper
+Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix					/usr/X11R6
-%define		_mandir					%{_prefix}/man
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
+%define		_sysconfdir	/etc/X11/GNOME2/gconf/schemas
 %define		_omf_dest_dir   %(scrollkeeper-config --omfdir)
-%define		_sysconfdir				/etc/X11/GNOME2/gconf/schemas
 
 %description
 File Roller is an archive manager for the GNOME environment. With File
@@ -61,6 +60,12 @@ w³a¶ciwych programów archiwizuj±cych. Obs³ugiwane typy plików to:
 - archiwa rar (.rar)
 - pojedyncze pliki skompresowane programami gzip, bzip, bzip2,
   compress, lzop.
+
+%description -l pt_BR
+File Roller é um gerenciador de pacotes de arquivos compactados para o
+ambiente GNOME. Com ele é possível criar arquivos, visualizar o
+conteúdo de arquivos existentes, visualizar um arquivo contido em um
+pacote e extrair os arquivos de um pacote.
 
 %prep
 %setup -q

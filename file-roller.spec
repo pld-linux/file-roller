@@ -18,8 +18,8 @@ BuildRequires:	libgnome-devel >= 2.2.0
 BuildRequires:	libgnomeui-devel >= 2.2.0
 BuildRequires:	libtool
 BuildRequires:	rpm-build >= 4.1-10
-Requires(post):	scrollkeeper
 Requires(post):	GConf2
+Requires(post):	scrollkeeper
 Requires:	gnome-vfs2 >= 2.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

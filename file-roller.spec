@@ -2,7 +2,7 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.2.0
+Version:	2.2.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
@@ -13,8 +13,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-vfs2-devel >= 2.2.0
 BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnome-devel >= 2.1.90
-BuildRequires:	libgnomeui-devel >= 2.1.90
+BuildRequires:	libgnome-devel >= 2.2.0
+BuildRequires:	libgnomeui-devel >= 2.2.0
 BuildRequires:	rpm-build >= 4.1-10
 Requires:	gnome-vfs2 >= 2.2.0
 Requires(post):	scrollkeeper
@@ -73,7 +73,8 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure \
-    --disable-schemas-install 
+    --disable-schemas-install \
+    --disable-static
 %{__make}
 
 %install

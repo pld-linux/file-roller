@@ -2,14 +2,13 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.10.0
-Release:	2
+Version:	2.10.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	0cb5b09aad7c9d352922994a6e8cf088
-Patch0:		%{name}-gzip-mime.patch
-Patch1:		%{name}-desktop.patch
+# Source0-md5:	f5432a9071b425f637a1796f99b95d82
+Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf >= 2.52
@@ -21,11 +20,11 @@ BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.10.0
 BuildRequires:	pkgconfig
-BuildRequires:	rpm-build >= 4.1-10
-Requires(post):	GConf2
+BuildRequires:	rpmbuild(macros) >= 1.176
+Requires(post,preun):	GConf2
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-vfs2 >= 2.10.0
-Requires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -74,7 +73,6 @@ pacote e extrair os arquivos de um pacote.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -97,7 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/libnautilus-fileroller.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.la
+rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
 
 %find_lang %{name} --with-gnome
 
@@ -105,15 +104,25 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/libnautilus-fileroller.l
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
-/usr/bin/scrollkeeper-update
-%gconf_schema_install
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
+%gconf_schema_install /etc/gconf/schemas/file-roller.schemas
+/usr/bin/scrollkeeper-update -q
+/usr/bin/update-desktop-database
+
+%banner %{name} -e << EOF
+For fully operational File Roller you need to install archiving
+programs described in README.
+EOF
+
+%preun
+if [ $1 = 0 ]; then
+	%gconf_schema_uninstall /etc/gconf/schemas/file-roller.schemas
+fi
 
 %postun
-umask 022
-/usr/bin/scrollkeeper-update
-[ ! -x /usr/bin/update-desktop-database ] || /usr/bin/update-desktop-database >/dev/null 2>&1
+if [ $1 = 0 ]; then
+	/usr/bin/scrollkeeper-update -q
+	/usr/bin/update-desktop-database
+fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -123,8 +132,6 @@ umask 022
 %attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*.so
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/file-roller
-%{_datadir}/application-registry/file-roller.applications
-%{_datadir}/mime-info/file-roller.*
 %{_desktopdir}/*
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}

@@ -2,28 +2,29 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.8.4
-Release:	1
+Version:	2.10.0
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	deabb6d24152457cf0afc036358602d4
+Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.10/%{name}-%{version}.tar.bz2
+# Source0-md5:	0cb5b09aad7c9d352922994a6e8cf088
 Patch0:		%{name}-gzip-mime.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.8.0.1
-BuildRequires:	autoconf
+BuildRequires:	GConf2-devel >= 2.10.0
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	gnome-vfs2-devel >= 2.8.1
-BuildRequires:	gtk+2-devel >= 2:2.4.4
-BuildRequires:	libglade2-devel >= 1:2.4.0
-BuildRequires:	libgnomeui-devel >= 2.8.0
+BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
+BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libtool
+BuildRequires:	nautilus-devel >= 2.10.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2
 Requires(post,postun):	scrollkeeper
-Requires:	gnome-vfs2 >= 2.8.1
+Requires:	gnome-vfs2 >= 2.10.0
 Requires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -96,6 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/libnautilus-fileroller.la
 
 %find_lang %{name} --with-gnome
 
@@ -118,6 +120,7 @@ umask 022
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/file-roller
 %attr(755,root,root) %{_libdir}/bonobo/*.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*.so
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/file-roller
 %{_datadir}/application-registry/file-roller.applications

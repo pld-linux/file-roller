@@ -70,7 +70,9 @@ rm -f missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure --disable-schemas-install
+%configure \
+    --disable-schemas-install \
+    --with-gconf-schema-file-dir=%{_sysconfdir}
 %{__make}
 
 %install

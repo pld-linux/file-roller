@@ -15,10 +15,11 @@ BuildRequires:	gnome-vfs2-devel >= 2.2.0
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnome-devel >= 2.2.0
 BuildRequires:	libgnomeui-devel >= 2.2.0
+BuildRequires:	libtool
 BuildRequires:	rpm-build >= 4.1-10
-Requires:	gnome-vfs2 >= 2.2.0
 Requires(post):	scrollkeeper
 Requires(post):	GConf2
+Requires:	gnome-vfs2 >= 2.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -109,4 +110,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mime-info/file-roller.*
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
-%{_sysconfdir}/gconf/schemas/**
+%{_sysconfdir}/gconf/schemas/*

@@ -6,7 +6,7 @@ Version:	2.8.3
 Release:	2
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.8/%{name}-%{version}.tar.bz2
 # Source0-md5:	841f0cc0eab979d98c25c16725c18745
 Patch0:		%{name}-gzip-mime.patch
 Patch1:		%{name}-desktop.patch
@@ -75,7 +75,6 @@ pacote e extrair os arquivos de um pacote.
 %patch1 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -95,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
 
 %find_lang %{name} --with-gnome
 
@@ -117,7 +117,6 @@ umask 022
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/file-roller
 %attr(755,root,root) %{_libdir}/bonobo/*.so
-%{_libdir}/bonobo/*.la
 %{_libdir}/bonobo/servers/*.server
 %{_datadir}/file-roller
 %{_datadir}/application-registry/file-roller.applications

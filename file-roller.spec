@@ -1,11 +1,11 @@
 Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Name:		file-roller
-Version:	2.1.0
+Version:	2.1.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/fileroller/file-roller-2.1.1.tar.gz
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
@@ -16,7 +16,7 @@ BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnome-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.0.0
-Requires(post,postun): scrollkeeper
+Requires(post): scrollkeeper
 Requires(post): GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -92,8 +92,7 @@ scrollkeeper-update
 GCONF_CONFIG_SOURCE="`%{_bindir}/gconftool-2 --get-default-source`" \
 %{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/*.schemas > /dev/null
 
-%postun
-scrollkeeper-update
+%postun -p /usr/bin/scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

@@ -108,4 +108,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mime-info/file-roller.*
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
-%{_sysconfdir}/*
+%{_sysconfdir}/gconf/schemas/**

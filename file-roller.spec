@@ -14,7 +14,7 @@ BuildRequires:	GConf2-devel >= 2.5.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-vfs2-devel >= 2.5.6
-BuildRequires:	gtk+2-devel >= 2.3.5
+BuildRequires:	gtk+2-devel >= 2:2.3.5
 BuildRequires:	libglade2-devel >= 2.3.1
 BuildRequires:	libgnomeui-devel >= 2.5.0
 BuildRequires:	libtool

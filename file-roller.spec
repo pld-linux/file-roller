@@ -76,8 +76,8 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure \
-    --disable-schemas-install \
-    --disable-static
+	--disable-schemas-install \
+	--disable-static
 %{__make}
 
 %install
@@ -105,10 +105,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/bonobo/*.so
 %{_libdir}/bonobo/*.la
 %{_libdir}/bonobo/servers/*.server
-%{_datadir}/applications/*
 %{_datadir}/file-roller
 %{_datadir}/application-registry/file-roller.applications
 %{_datadir}/mime-info/file-roller.*
+%{_desktopdir}/*
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/*

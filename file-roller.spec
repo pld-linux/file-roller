@@ -12,7 +12,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-vfs2-devel >= 2.2.0
+BuildRequires:	gnome-vfs2-devel >= 2.3.7
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnome-devel >= 2.2.0
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
@@ -20,7 +20,7 @@ BuildRequires:	libtool
 BuildRequires:	rpm-build >= 4.1-10
 Requires(post):	GConf2
 Requires(post):	scrollkeeper
-Requires:	gnome-vfs2 >= 2.2.0
+Requires:	gnome-vfs2 >= 2.3.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

@@ -1,4 +1,5 @@
 Summary:	An archive manager for GNOME
+Summary(pl):	Zarz±dca archiwów dla GNOME
 Name:		file-roller
 Version:	1.0
 Release:	1
@@ -17,10 +18,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 File Roller is an archive manager for the GNOME environment. With File
-Roller you can : create and modify archives; view the content of an
+Roller you can: create and modify archives; view the content of an
 archive; view a file contained in the archive; extract files from the
 archive. File Roller is only a front-end (a graphical interface) to
-various archiving programs. The supported file types are :
+various archiving programs. The supported file types are:
     - Tar archives uncompressed (.tar) or compressed with
           - gzip (.tar.gz , .tgz)
           - bzip (.tar.bz , .tbz)
@@ -31,7 +32,26 @@ various archiving programs. The supported file types are :
     - Jar archives (.jar , .ear , .war)
     - Lha archives (.lzh)
     - Rar archives (.rar)
-    - Single files compressed with gzip, bzip, bzip2, compress, lzop
+    - Single files compressed with gzip, bzip, bzip2, compress, lzop.
+
+%description -l pl
+File Roller to zarz±dca archiwów dla ¶rodowiska GNOME. Przy jego
+pomocy mo¿na: tworzyæ i modyfikowaæ archiwa, ogl±daæ ich zawarto¶æ,
+ogl±daæ poszczególne pliki zawarte w archiwum oraz rozpakowywaæ pliki
+z archiwów. File Roller jest tylko interfejsem graficznym do
+w³a¶ciwych programów archiwizuj±cych. Obs³ugiwane typy plików to:
+- archiwa tar nieskompresowane (.tar) lub skompresowane programami:
+  - gzip (.tar.gz, .tgz)
+  - bzip (.tar.bz, .tbz)
+  - bzip2 (.tar.bz2, .tbz2)
+  - compress (.tar.Z, .taz)
+  - lzop (.tar.lzo, .tzo)
+- archiwa zip (.zip)
+- archiwa jar (.jar, .ear, .war)
+- archiwa lha (.lzh)
+- archiwa rar (.rar)
+- pojedyncze pliki skompresowane programami gzip, bzip, bzip2,
+  compress, lzop.
 
 %prep
 %setup -q
@@ -53,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf AUTHORS NEWS README
 
-%_find_lang %{name}
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT

@@ -1,0 +1,12 @@
+diff -urN aa/file-roller-2.5.4/configure.in file-roller-2.5.4/configure.in
+--- aa/file-roller-2.5.4/configure.in	2004-02-16 16:53:19.000000000 +0100
++++ file-roller-2.5.4/configure.in	2004-02-16 17:51:50.433193208 +0100
+@@ -55,7 +55,7 @@
+ 
+ dnl ******************************
+ 
+-ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_GB es et eu fa fi fr ga he hi hr hu id is it ja kn ko lt lv mk ml mn ms nl nn no pa pl pt pt_BR ro ru sk sl sq sr sr@ije sr@Latn sv ta th tr uk vi zh_CN zh_TW"
++ALL_LINGUAS="am ar az be bg bn ca cs cy da de el en_GB es et eu fa fi fr ga he hi hr hu id is it ja kn ko lt lv mk ml mn ms nb nl nn pa pl pt pt_BR ro ru sk sl sq sr sr@ije sr@Latn sv ta th tr uk vi zh_CN zh_TW"
+ 
+ GETTEXT_PACKAGE=file-roller
+ AC_SUBST(GETTEXT_PACKAGE)

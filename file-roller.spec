@@ -2,20 +2,22 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.1.2
-Release:	5
+Version:	2.1.3
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://prdownloads.sourceforge.net/fileroller/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-configure.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-vfs2-devel >= 2.0.4-3
+BuildRequires:	gnome-vfs2-devel >= 2.1.4
 BuildRequires:	libglade2-devel >= 2.0.1
 BuildRequires:	libgnome-devel >= 2.1.0-3
 BuildRequires:	libgnomeui-devel >= 2.1.1-3
-Requires:	gnome-vfs2 >= 2.0.4-3
+BuildRequires:	rpm-build >= 4.1-8.2
+Requires:	gnome-vfs2 >= 2.1.4
 Requires(post):	scrollkeeper
 Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,6 +67,7 @@ pacote e extrair os arquivos de um pacote.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 rm -f missing
@@ -101,6 +104,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/file-roller
 %{_datadir}/application-registry/file-roller.applications
 %{_datadir}/mime-info/file-roller.*
+%{_libdir}/bonobo/*.so
+%{_libdir}/bonobo/*.la
+%{_libdir}/bonobo/servers/*.server
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/*

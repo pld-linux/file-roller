@@ -3,7 +3,7 @@ Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.1.2
-Release:	3
+Release:	5
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://prdownloads.sourceforge.net/fileroller/%{name}-%{version}.tar.gz
@@ -19,11 +19,6 @@ Requires:	gnome-vfs2 >= 2.0.4-3
 Requires(post):	scrollkeeper
 Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
-%define		_sysconfdir	/etc/X11/GNOME2/gconf/schemas
-%define		_omf_dest_dir   %(scrollkeeper-config --omfdir)
 
 %description
 File Roller is an archive manager for the GNOME environment. With File
@@ -77,8 +72,7 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure \
-    --disable-schemas-install \
-    --with-gconf-schema-file-dir=%{_sysconfdir}
+    --disable-schemas-install 
 %{__make}
 
 %install
@@ -95,8 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /usr/bin/scrollkeeper-update
-GCONF_CONFIG_SOURCE="" \
-%{_bindir}/gconftool-2 --makefile-install-rule %{_sysconfdir}/*.schemas > /dev/null
+%gconf_schema_install
 
 %postun -p /usr/bin/scrollkeeper-update
 

@@ -59,8 +59,8 @@ w³a¶ciwych programów archiwizuj±cych. Obs³ugiwane typy plików to:
 %build
 rm -f missing
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure
 %{__make}
 

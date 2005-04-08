@@ -3,7 +3,7 @@ Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.10.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.10/%{name}-%{version}.tar.bz2
@@ -20,7 +20,7 @@ BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.10.0-3
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.196
+BuildRequires:	rpmbuild(macros) >= 1.197
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
@@ -82,7 +82,6 @@ pacote e extrair os arquivos de um pacote.
 %configure \
 	--disable-schemas-install \
 	--disable-static
-
 %{__make}
 
 %install
@@ -104,27 +103,20 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
-%gconf_schema_install /etc/gconf/schemas/file-roller.schemas
-/usr/bin/scrollkeeper-update -q
-/usr/bin/update-desktop-database
-
+%gconf_schema_install file-roller.schemas
+%scrollkeeper_update_post
+%update_desktop_database_post
 %banner %{name} -e << EOF
 For fully operational File Roller you need to install archiving
 programs described in README.
 EOF
 
 %preun
-if [ $1 = 0 ]; then
-	%gconf_schema_uninstall /etc/gconf/schemas/file-roller.schemas
-fi
+%gconf_schema_uninstall file-roller.schemas
 
 %postun
-if [ $1 = 0 ]; then
-	umask 022
-	/usr/bin/scrollkeeper-update -q
-	/usr/bin/update-desktop-database
-fi
+%scrollkeeper_update_postun
+%update_desktop_database_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

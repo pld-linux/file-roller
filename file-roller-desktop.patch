@@ -6,7 +6,7 @@ diff -urN file-roller-2.8.3.orig/file-roller.desktop.in file-roller-2.8.3/file-r
  _Name=Archive Manager
  _Comment=Create and modify an archive
 -Categories=GNOME;Application;System;Utility;
-+Categories=GTK;GNOME;Utility;Archiving
++Categories=GTK;GNOME;Utility;Archiving;
  Encoding=UTF-8
  Exec=file-roller %F
  Icon=file-roller.png

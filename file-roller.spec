@@ -23,6 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.10.0-3
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
@@ -132,4 +133,4 @@ EOF
 %{_desktopdir}/*
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/file-roller.schemas

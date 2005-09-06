@@ -2,26 +2,28 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.10.4
+Version:	2.12.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.10/%{name}-%{version}.tar.bz2
-# Source0-md5:	74115fe3289042cc41dc517dede3f64f
+Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.12/%{name}-%{version}.tar.bz2
+# Source0-md5:	fcc3197b998568ba45843eb04b2614d3
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-doc-utils >= 0.3.1-2
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gtk+2-devel >= 2:2.6.4
+BuildRequires:	gtk+2-devel >= 2:2.8.0
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.10.0-3
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
@@ -76,6 +78,7 @@ pacote e extrair os arquivos de um pacote.
 %patch0 -p1
 
 %build
+gnome-doc-prepare --copy --force
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -130,4 +133,4 @@ EOF
 %{_desktopdir}/*
 %{_pixmapsdir}/file-roller.png
 %{_omf_dest_dir}/%{name}
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/file-roller.schemas

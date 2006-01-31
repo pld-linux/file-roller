@@ -1,11 +1,11 @@
-diff -urN file-roller-2.8.3.orig/file-roller.desktop.in file-roller-2.8.3/file-roller.desktop.in
---- file-roller-2.8.3.orig/data/file-roller.desktop.in	2004-11-17 12:12:09.932840200 +0100
-+++ file-roller-2.8.3/data/file-roller.desktop.in	2004-11-17 12:13:31.104500232 +0100
+diff -aurN file-roller-2.13.90.orig/data/file-roller.desktop.in file-roller-2.13.90/data/file-roller.desktop.in
+--- file-roller-2.13.90.orig/data/file-roller.desktop.in	2006-01-30 22:18:28.000000000 +0100
++++ file-roller-2.13.90/data/file-roller.desktop.in	2006-01-31 16:03:54.270754000 +0100
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  _Name=Archive Manager
  _Comment=Create and modify an archive
--Categories=GNOME;Application;System;Utility;
+-Categories=GTK;GNOME;Application;Utility;
 +Categories=GTK;GNOME;Utility;Archiving;
  Encoding=UTF-8
  Exec=file-roller %F

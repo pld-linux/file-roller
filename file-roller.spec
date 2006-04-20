@@ -2,12 +2,12 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.14.1
+Version:	2.14.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	31f994e5874e8f96c33cbe39d9e7a7e9
+# Source0-md5:	4900dc4b2e4f0f173bd88cb5e6b9bde1
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.10.0
@@ -96,7 +96,6 @@ rm -rf $RPM_BUILD_ROOT
 	omf_dest_dir=%{_omf_dest_dir}/%{name} \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.la
 rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}

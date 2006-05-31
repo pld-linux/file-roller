@@ -28,7 +28,7 @@ Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-vfs2 >= 2.14.2
-Requires:	libgnomeui >= 2.14.2
+Requires:	libgnomeui >= 2.14.1
 Requires:	nautilus-libs >= 2.14
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

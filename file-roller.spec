@@ -3,7 +3,7 @@ Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.14.3
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.14/%{name}-%{version}.tar.bz2
@@ -14,22 +14,22 @@ BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.3.1-2
-BuildRequires:	gnome-vfs2-devel >= 2.14.2
-BuildRequires:	gtk+2-devel >= 2:2.8.18
+BuildRequires:	gnome-doc-utils >= 0.6.0
+BuildRequires:	gnome-vfs2-devel >= 2.15.1
+BuildRequires:	gtk+2-devel >= 2:2.9.2
 BuildRequires:	libglade2-devel >= 1:2.5.1
-BuildRequires:	libgnomeui-devel >= 2.14.1
+BuildRequires:	libgnomeui-devel >= 2.15.1
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.14.0
+BuildRequires:	nautilus-devel >= 2.15.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post,preun):	GConf2
+Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
-Requires:	gnome-vfs2 >= 2.14.2
-Requires:	libgnomeui >= 2.14.1
-Requires:	nautilus-libs >= 2.14
+Requires:	gnome-vfs2 >= 2.15.1
+Requires:	libgnomeui >= 2.15.1
+Requires:	nautilus-libs >= 2.15.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -101,6 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.la
 rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
+rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/tk
 
 %find_lang %{name} --with-gnome
 

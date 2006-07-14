@@ -2,34 +2,34 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.14.3
-Release:	2
+Version:	2.15.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	11a11675a9ec5f8b0164713fc60894af
+Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.15/%{name}-%{version}.tar.bz2
+# Source0-md5:	ec829899b9d17860244b05182e8ed69f
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.6.0
-BuildRequires:	gnome-vfs2-devel >= 2.15.1
-BuildRequires:	gtk+2-devel >= 2:2.9.2
-BuildRequires:	libglade2-devel >= 1:2.5.1
-BuildRequires:	libgnomeui-devel >= 2.15.1
+BuildRequires:	gnome-doc-utils >= 0.7.1
+BuildRequires:	gnome-vfs2-devel >= 2.15.3
+BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	libgnomeui-devel >= 2.15.2
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.15.1
+BuildRequires:	nautilus-devel >= 2.15.4
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	scrollkeeper
-Requires:	gnome-vfs2 >= 2.15.1
-Requires:	libgnomeui >= 2.15.1
-Requires:	nautilus-libs >= 2.15.1
+Requires:	gnome-vfs2 >= 2.15.3
+Requires:	libgnomeui >= 2.15.2
+Requires:	nautilus-libs >= 2.15.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -85,6 +85,7 @@ gnome-doc-prepare --copy --force
 %{__aclocal}
 %{__autoconf}
 %{__automake}
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--disable-schemas-install \
 	--disable-static

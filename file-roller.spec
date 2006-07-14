@@ -3,7 +3,7 @@ Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.15.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.15/%{name}-%{version}.tar.bz2
@@ -26,6 +26,7 @@ BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	gtk+2 >= 2.10.0
 Requires(post,postun):	scrollkeeper
 Requires:	gnome-vfs2 >= 2.15.3
 Requires:	libgnomeui >= 2.15.2
@@ -113,6 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install file-roller.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 %banner %{name} -e << EOF
 For fully operational File Roller you need to install archiving
 programs described in README.
@@ -124,6 +126,7 @@ EOF
 %postun
 %scrollkeeper_update_postun
 %update_desktop_database_postun
+gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

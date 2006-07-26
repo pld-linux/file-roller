@@ -2,12 +2,12 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.15.1
-Release:	2
+Version:	2.15.90
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	ec829899b9d17860244b05182e8ed69f
+# Source0-md5:	f51b05db9761532682ae3af4223e8a22
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
@@ -15,22 +15,22 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-doc-utils >= 0.7.1
-BuildRequires:	gnome-vfs2-devel >= 2.15.3
-BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	gnome-vfs2-devel >= 2.15.90
+BuildRequires:	gtk+2-devel >= 2:2.10.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.15.2
+BuildRequires:	libgnomeui-devel >= 2.15.90
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.15.4
+BuildRequires:	nautilus-devel >= 2.15.90
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2 >= 2.10.0
 Requires(post,postun):	scrollkeeper
-Requires:	gnome-vfs2 >= 2.15.3
-Requires:	libgnomeui >= 2.15.2
-Requires:	nautilus-libs >= 2.15.4
+Requires:	gnome-vfs2 >= 2.15.90
+Requires:	libgnomeui >= 2.15.90
+Requires:	nautilus-libs >= 2.15.90
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -81,12 +81,11 @@ pacote e extrair os arquivos de um pacote.
 %patch0 -p1
 
 %build
-gnome-doc-prepare --copy --force
+%{__gnome_doc_prepare}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--disable-schemas-install \
 	--disable-static
@@ -114,7 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install file-roller.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
-gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+%update_icon_cache hicolor
 %banner %{name} -e << EOF
 For fully operational File Roller you need to install archiving
 programs described in README.
@@ -126,7 +125,7 @@ EOF
 %postun
 %scrollkeeper_update_postun
 %update_desktop_database_postun
-gtk-update-icon-cache -qf %{_datadir}/icons/hicolor
+%update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

@@ -2,12 +2,12 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.14.3
+Version:	2.14.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	11a11675a9ec5f8b0164713fc60894af
+# Source0-md5:	e86c78b3ecc90af20cf66511f4622c5c
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
@@ -80,7 +80,7 @@ pacote e extrair os arquivos de um pacote.
 %patch0 -p1
 
 %build
-gnome-doc-prepare --copy --force
+%{__gnome_doc_prepare}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -111,6 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install file-roller.schemas
 %scrollkeeper_update_post
 %update_desktop_database_post
+%update_icon_cache hicolor
 %banner %{name} -e << EOF
 For fully operational File Roller you need to install archiving
 programs described in README.
@@ -122,6 +123,7 @@ EOF
 %postun
 %scrollkeeper_update_postun
 %update_desktop_database_postun
+%update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

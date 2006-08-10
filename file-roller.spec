@@ -2,35 +2,35 @@ Summary:	An archive manager for GNOME
 Summary(pl):	Zarz±dca archiwów dla GNOME
 Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.15.90
+Version:	2.15.92
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	f51b05db9761532682ae3af4223e8a22
+# Source0-md5:	3cedfcb791913bc090737783047759ce
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.7.1
-BuildRequires:	gnome-vfs2-devel >= 2.15.90
+BuildRequires:	gnome-doc-utils >= 0.7.2
+BuildRequires:	gnome-vfs2-devel >= 2.15.91
 BuildRequires:	gtk+2-devel >= 2:2.10.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.15.90
+BuildRequires:	libgnomeui-devel >= 2.15.91
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.15.90
+BuildRequires:	nautilus-devel >= 2.15.91
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2 >= 2.10.0
+Requires(post,postun):	gtk+2 >= 2.10.1
 Requires(post,postun):	scrollkeeper
-Requires:	gnome-vfs2 >= 2.15.90
-Requires:	libgnomeui >= 2.15.90
-Requires:	nautilus-libs >= 2.15.90
+Requires:	gnome-vfs2 >= 2.15.91
+Requires:	libgnomeui >= 2.15.91
+Requires:	nautilus-libs >= 2.15.91
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

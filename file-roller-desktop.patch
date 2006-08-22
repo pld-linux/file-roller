@@ -1,12 +1,12 @@
-diff -aurN file-roller-2.13.90.orig/data/file-roller.desktop.in file-roller-2.13.90/data/file-roller.desktop.in
---- file-roller-2.13.90.orig/data/file-roller.desktop.in	2006-01-30 22:18:28.000000000 +0100
-+++ file-roller-2.13.90/data/file-roller.desktop.in	2006-01-31 16:03:54.270754000 +0100
-@@ -1,7 +1,7 @@
- [Desktop Entry]
- _Name=Archive Manager
- _Comment=Create and modify an archive
+diff -aurN file-roller-2.15.93.orig/data/file-roller.desktop.in.in file-roller-2.15.93/data/file-roller.desktop.in.in
+--- file-roller-2.15.93.orig/data/file-roller.desktop.in.in	2006-08-14 10:12:42.000000000 +0200
++++ file-roller-2.15.93/data/file-roller.desktop.in.in	2006-08-22 21:19:51.000000000 +0200
+@@ -8,7 +8,7 @@
+ Terminal=false
+ Type=Application
+ Icon=file-roller
 -Categories=GTK;GNOME;Application;Utility;
 +Categories=GTK;GNOME;Utility;Archiving;
- Encoding=UTF-8
- Exec=file-roller %F
- Icon=file-roller.png
+ MimeType=application/x-ar;application/x-arj;application/x-bzip;application/x-bzip-compressed-tar;application/x-compress;application/x-compressed-tar;application/x-deb;application/x-gtar;application/x-gzip;application/x-lha;application/x-lhz;application/x-rar;application/x-rar-compressed;application/x-tar;application/x-zip;application/x-zip-compressed;application/zip;multipart/x-zip;application/x-rpm;application/x-jar;application/x-war;application/x-ear;application/x-java-archive;application/x-lzop;application/x-zoo;application/x-cd-image;application/x-7z-compressed;application/x-gzpostscript;
+ X-GNOME-DocPath=file-roller/file-roller.xml
+ X-GNOME-Bugzilla-Bugzilla=GNOME

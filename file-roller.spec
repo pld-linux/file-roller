@@ -102,7 +102,6 @@ rm -rf $RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.la
 rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/tk
 
 %find_lang %{name} --with-gnome
 

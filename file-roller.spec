@@ -132,7 +132,7 @@ EOF
 %attr(755,root,root) %{_bindir}/file-roller
 %attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*.so
 %{_datadir}/file-roller
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/apps/file-roller.png
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/file-roller.schemas

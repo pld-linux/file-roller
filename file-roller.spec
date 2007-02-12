@@ -1,6 +1,6 @@
 Summary:	An archive manager for GNOME
-Summary(pl.UTF-8):   Zarządca archiwów dla GNOME
-Summary(pt_BR.UTF-8):   Gerenciador de arquivos compactados para o GNOME
+Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
+Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.16.3
 Release:	1

@@ -1,6 +1,6 @@
 Summary:	An archive manager for GNOME
-Summary(pl):	Zarz±dca archiwów dla GNOME
-Summary(pt_BR):	Gerenciador de arquivos compactados para o GNOME
+Summary(pl.UTF-8):   ZarzÄ…dca archiwÃ³w dla GNOME
+Summary(pt_BR.UTF-8):   Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.16.3
 Release:	1
@@ -51,12 +51,12 @@ various archiving programs. The supported file types are:
 - Rar archives (.rar)
 - Single files compressed with gzip, bzip, bzip2, compress, lzop.
 
-%description -l pl
-File Roller to zarz±dca archiwów dla ¶rodowiska GNOME. Przy jego
-pomocy mo¿na: tworzyæ i modyfikowaæ archiwa, ogl±daæ ich zawarto¶æ,
-ogl±daæ poszczególne pliki zawarte w archiwum oraz rozpakowywaæ pliki
-z archiwów. File Roller jest tylko interfejsem graficznym do
-w³a¶ciwych programów archiwizuj±cych. Obs³ugiwane typy plików to:
+%description -l pl.UTF-8
+File Roller to zarzÄ…dca archiwÃ³w dla Å›rodowiska GNOME. Przy jego
+pomocy moÅ¼na: tworzyÄ‡ i modyfikowaÄ‡ archiwa, oglÄ…daÄ‡ ich zawartoÅ›Ä‡,
+oglÄ…daÄ‡ poszczegÃ³lne pliki zawarte w archiwum oraz rozpakowywaÄ‡ pliki
+z archiwÃ³w. File Roller jest tylko interfejsem graficznym do
+wÅ‚aÅ›ciwych programÃ³w archiwizujÄ…cych. ObsÅ‚ugiwane typy plikÃ³w to:
 - archiwa tar nieskompresowane (.tar) lub skompresowane programami:
  - gzip (.tar.gz, .tgz)
  - bzip (.tar.bz, .tbz)
@@ -70,10 +70,10 @@ w³a¶ciwych programów archiwizuj±cych. Obs³ugiwane typy plików to:
 - pojedyncze pliki skompresowane programami gzip, bzip, bzip2,
   compress, lzop.
 
-%description -l pt_BR
-File Roller é um gerenciador de pacotes de arquivos compactados para o
-ambiente GNOME. Com ele é possível criar arquivos, visualizar o
-conteúdo de arquivos existentes, visualizar um arquivo contido em um
+%description -l pt_BR.UTF-8
+File Roller Ã© um gerenciador de pacotes de arquivos compactados para o
+ambiente GNOME. Com ele Ã© possÃ­vel criar arquivos, visualizar o
+conteÃºdo de arquivos existentes, visualizar um arquivo contido em um
 pacote e extrair os arquivos de um pacote.
 
 %prep

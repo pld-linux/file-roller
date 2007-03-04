@@ -2,12 +2,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.16.3
+Version:	2.17.92
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	3ee134c04b73a584c9ec494d5e542c6d
+Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.17/%{name}-%{version}.tar.bz2
+# Source0-md5:	1876310738ef58eca3fa51f2a00d0166
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.16.0
@@ -131,8 +131,10 @@ EOF
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/file-roller
 %attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*.so
+%dir %{_libdir}/file-roller
+%attr(755,root,root) %{_libdir}/file-roller/*.sh
 %{_datadir}/file-roller
 %{_desktopdir}/*.desktop
-%{_iconsdir}/hicolor/*/apps/file-roller.png
+%{_iconsdir}/hicolor/*/apps/file-roller.*
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/file-roller.schemas

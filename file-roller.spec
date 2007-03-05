@@ -10,27 +10,28 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.17/%{name}-%{versi
 # Source0-md5:	1876310738ef58eca3fa51f2a00d0166
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.16.0
+BuildRequires:	GConf2-devel >= 2.18.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.16.3
+BuildRequires:	gnome-doc-utils >= 0.9.2
+BuildRequires:	gnome-vfs2-devel >= 2.17.91
 BuildRequires:	gtk+2-devel >= 2:2.10.9
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.16.1
+BuildRequires:	libgnomeui-devel >= 2.17.92
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.16.3
+BuildRequires:	nautilus-devel >= 2.17.92
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
+Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.16.0
-Requires:	gnome-vfs2 >= 2.16.3
-Requires:	libgnomeui >= 2.16.1
-Requires:	nautilus-libs >= 2.16.3
+Requires(post,preun):	GConf2
+Requires:	gnome-vfs2 >= 2.17.91
+Requires:	libgnomeui >= 2.17.92
+Requires:	nautilus-libs >= 2.17.92
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

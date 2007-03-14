@@ -2,35 +2,36 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.16.3
+Version:	2.18.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	3ee134c04b73a584c9ec494d5e542c6d
+Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.18/%{name}-%{version}.tar.bz2
+# Source0-md5:	8f8b6b0e4598f2773f6948a631ca8721
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.16.0
+BuildRequires:	GConf2-devel >= 2.18.0.1
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.8.0
-BuildRequires:	gnome-vfs2-devel >= 2.16.3
-BuildRequires:	gtk+2-devel >= 2:2.10.9
+BuildRequires:	gnome-doc-utils >= 0.10.1
+BuildRequires:	gnome-vfs2-devel >= 2.18.0.1
+BuildRequires:	gtk+2-devel >= 2:2.10.10
 BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.16.1
+BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.16.3
+BuildRequires:	nautilus-devel >= 2.18.0.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
+Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.16.0
-Requires:	gnome-vfs2 >= 2.16.3
-Requires:	libgnomeui >= 2.16.1
-Requires:	nautilus-libs >= 2.16.3
+Requires(post,preun):	GConf2
+Requires:	gnome-vfs2 >= 2.18.0.1
+Requires:	libgnomeui >= 2.18.1
+Requires:	nautilus-libs >= 2.18.0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -131,8 +132,10 @@ EOF
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/file-roller
 %attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*.so
+%dir %{_libdir}/file-roller
+%attr(755,root,root) %{_libdir}/file-roller/*.sh
 %{_datadir}/file-roller
 %{_desktopdir}/*.desktop
-%{_iconsdir}/hicolor/*/apps/file-roller.png
+%{_iconsdir}/hicolor/*/apps/file-roller.*
 %{_omf_dest_dir}/%{name}
 %{_sysconfdir}/gconf/schemas/file-roller.schemas

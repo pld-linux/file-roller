@@ -2,25 +2,25 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.18.4
+Version:	2.19.92
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/file-roller/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	f651f951d5c1c24288c1a25b1f567be0
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.19/%{name}-%{version}.tar.bz2
+# Source0-md5:	f19d29d7406e5773202da1782d7d1d0b
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.18.0.1
+BuildRequires:	GConf2-devel >= 2.19.1
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.10.3
-BuildRequires:	gnome-vfs2-devel >= 2.18.0.1
-BuildRequires:	gtk+2-devel >= 2:2.10.14
-BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.18.1
+BuildRequires:	gnome-doc-utils >= 0.12.0
+BuildRequires:	gnome-vfs2-devel >= 2.20.0
+BuildRequires:	gtk+2-devel >= 2:2.12.0
+BuildRequires:	libglade2-devel >= 1:2.6.2
+BuildRequires:	libgnomeui-devel >= 2.19.1
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.18.1
+BuildRequires:	nautilus-devel >= 2.19.91
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
@@ -29,9 +29,9 @@ Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
-Requires:	gnome-vfs2 >= 2.18.0.1
-Requires:	libgnomeui >= 2.18.1
-Requires:	nautilus-libs >= 2.18.1
+Requires:	gnome-vfs2 >= 2.20.0
+Requires:	libgnomeui >= 2.19.1
+Requires:	nautilus-libs >= 2.19.91
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -83,6 +83,7 @@ pacote e extrair os arquivos de um pacote.
 
 %build
 %{__gnome_doc_prepare}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -137,5 +138,16 @@ EOF
 %{_datadir}/file-roller
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/apps/file-roller.*
-%{_omf_dest_dir}/%{name}
+%dir %{_omf_dest_dir}/%{name}
+%{_omf_dest_dir}/file-roller/file-roller-C.omf
+%lang(bg) %{_omf_dest_dir}/file-roller/file-roller-bg.omf
+%lang(de) %{_omf_dest_dir}/file-roller/file-roller-de.omf
+%lang(es) %{_omf_dest_dir}/file-roller/file-roller-es.omf
+%lang(fr) %{_omf_dest_dir}/file-roller/file-roller-fr.omf
+%lang(it) %{_omf_dest_dir}/file-roller/file-roller-it.omf
+%lang(nl) %{_omf_dest_dir}/file-roller/file-roller-nl.omf
+%lang(oc) %{_omf_dest_dir}/file-roller/file-roller-oc.omf
+%lang(ru) %{_omf_dest_dir}/file-roller/file-roller-ru.omf
+%lang(sv) %{_omf_dest_dir}/file-roller/file-roller-sv.omf
+%lang(uk) %{_omf_dest_dir}/file-roller/file-roller-uk.omf
 %{_sysconfdir}/gconf/schemas/file-roller.schemas

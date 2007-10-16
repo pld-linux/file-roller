@@ -2,15 +2,15 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.20.0
+Version:	2.20.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	f8b6490114da7d39ee0b239cf0216d0c
+# Source0-md5:	d99d9cc2ae3007eb5c8a6c7eb7d861aa
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.19.1
+BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -18,9 +18,9 @@ BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-vfs2-devel >= 2.20.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.19.1
+BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.19.91
+BuildRequires:	nautilus-devel >= 2.20.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
@@ -30,8 +30,8 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	gnome-vfs2 >= 2.20.0
-Requires:	libgnomeui >= 2.19.1
-Requires:	nautilus-libs >= 2.19.91
+Requires:	libgnomeui >= 2.20.0
+Requires:	nautilus-libs >= 2.20.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

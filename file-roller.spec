@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	2.20.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.20/%{name}-%{version}.tar.bz2
@@ -32,6 +32,8 @@ Requires(post,preun):	GConf2
 Requires:	gnome-vfs2 >= 2.20.0
 Requires:	libgnomeui >= 2.20.0
 Requires:	nautilus-libs >= 2.20.0
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -105,6 +107,8 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.la
 rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
 
+[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
+	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang %{name} --with-gnome
 
 %clean

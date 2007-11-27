@@ -2,12 +2,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.20.1
-Release:	2
+Version:	2.20.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	d99d9cc2ae3007eb5c8a6c7eb7d861aa
+# Source0-md5:	98f725b2a0d04e6035d8a3e884e07a5c
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.20.0
@@ -22,6 +22,8 @@ BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	nautilus-devel >= 2.20.0
 BuildRequires:	pkgconfig
+# support for --with-omf in find-lang.sh
+BuildRequires:	rpm-build >= 4.4.9-10
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,postun):	desktop-file-utils
@@ -83,6 +85,9 @@ pacote e extrair os arquivos de um pacote.
 %setup -q
 %patch0 -p1
 
+sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
+mv po/sr\@{Latn,latin}.po
+
 %build
 %{__gnome_doc_prepare}
 %{__intltoolize}
@@ -107,9 +112,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.la
 rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -142,16 +145,4 @@ EOF
 %{_datadir}/file-roller
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/apps/file-roller.*
-%dir %{_omf_dest_dir}/%{name}
-%{_omf_dest_dir}/file-roller/file-roller-C.omf
-%lang(bg) %{_omf_dest_dir}/file-roller/file-roller-bg.omf
-%lang(de) %{_omf_dest_dir}/file-roller/file-roller-de.omf
-%lang(es) %{_omf_dest_dir}/file-roller/file-roller-es.omf
-%lang(fr) %{_omf_dest_dir}/file-roller/file-roller-fr.omf
-%lang(it) %{_omf_dest_dir}/file-roller/file-roller-it.omf
-%lang(nl) %{_omf_dest_dir}/file-roller/file-roller-nl.omf
-%lang(oc) %{_omf_dest_dir}/file-roller/file-roller-oc.omf
-%lang(ru) %{_omf_dest_dir}/file-roller/file-roller-ru.omf
-%lang(sv) %{_omf_dest_dir}/file-roller/file-roller-sv.omf
-%lang(uk) %{_omf_dest_dir}/file-roller/file-roller-uk.omf
 %{_sysconfdir}/gconf/schemas/file-roller.schemas

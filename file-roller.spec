@@ -37,7 +37,11 @@ Requires:	nautilus-libs >= 2.20.0
 Suggests:	bzip2
 Suggests:	gzip
 Suggests:	p7zip
+%ifarch %{ix86}
 Suggests:	rar
+%else
+Suggests:	unrar
+%endif
 Suggests:	tar
 Suggests:	zip
 # sr@Latn vs. sr@latin

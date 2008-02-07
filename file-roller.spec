@@ -35,6 +35,16 @@ Requires(post,preun):	GConf2
 Requires:	gnome-vfs2 >= 2.20.0
 Requires:	libgnomeui >= 2.21.90
 Requires:	nautilus-libs >= 2.21.90
+Suggests:	bzip2
+Suggests:	gzip
+Suggests:	p7zip
+%ifarch %{ix86}
+Suggests:	rar
+%else
+Suggests:	unrar
+%endif
+Suggests:	tar
+Suggests:	zip
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -124,10 +134,6 @@ rm -rf $RPM_BUILD_ROOT
 %scrollkeeper_update_post
 %update_desktop_database_post
 %update_icon_cache hicolor
-%banner %{name} -e << EOF
-For fully operational File Roller you need to install archiving
-programs described in README.
-EOF
 
 %preun
 %gconf_schema_uninstall file-roller.schemas

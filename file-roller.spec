@@ -2,25 +2,26 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.20.3
-Release:	2
+Version:	2.22.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	7af6bac2e96ad9c728d791ce21dba8f5
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	81836da5b75575c45154ad851da699cb
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.20.0
+BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gnome-vfs2-devel >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
+BuildRequires:	gnome-doc-utils >= 0.12.1
+BuildRequires:	gnome-vfs2-devel >= 2.22.0
+BuildRequires:	gtk+2-devel >= 2:2.12.8
+BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.20.0
+BuildRequires:	libgnomeui-devel >= 2.22.01
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.20.0
+BuildRequires:	nautilus-devel >= 2.22.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -31,9 +32,9 @@ Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
-Requires:	gnome-vfs2 >= 2.20.0
-Requires:	libgnomeui >= 2.20.0
-Requires:	nautilus-libs >= 2.20.0
+Requires:	gnome-vfs2 >= 2.22.0
+Requires:	libgnomeui >= 2.22.01
+Requires:	nautilus-libs >= 2.22.0
 Suggests:	bzip2
 Suggests:	gzip
 Suggests:	p7zip
@@ -95,8 +96,8 @@ pacote e extrair os arquivos de um pacote.
 %setup -q
 %patch0 -p1
 
-sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
-mv po/sr\@{Latn,latin}.po
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv po/sr@{Latn,latin}.po
 
 %build
 %{__gnome_doc_prepare}
@@ -104,6 +105,7 @@ mv po/sr\@{Latn,latin}.po
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-schemas-install \
@@ -119,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/bonobo/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-1.0/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
 rm -rf $RPM_BUILD_ROOT%{_datadir}/{mime-info,application-registry}
 
 %find_lang %{name} --with-gnome --with-omf
@@ -143,12 +145,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/file-roller
-%attr(755,root,root) %{_libdir}/nautilus/extensions-1.0/*.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-fileroller.so
 %dir %{_libdir}/file-roller
-%attr(755,root,root) %{_libdir}/file-roller/*.sh
+%attr(755,root,root) %{_libdir}/file-roller/isoinfo.sh
 %{_datadir}/file-roller
-%{_desktopdir}/*.desktop
+%{_desktopdir}/file-roller.desktop
 %{_iconsdir}/hicolor/*/apps/file-roller.*
 %{_sysconfdir}/gconf/schemas/file-roller.schemas

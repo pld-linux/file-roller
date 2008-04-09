@@ -2,12 +2,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.22.0
-Release:	2
+Version:	2.22.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	81836da5b75575c45154ad851da699cb
+# Source0-md5:	68f89c4723e4f2d2e58b15f7b2a20d23
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
@@ -19,9 +19,9 @@ BuildRequires:	gnome-vfs2-devel >= 2.22.0
 BuildRequires:	gtk+2-devel >= 2:2.12.8
 BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomeui-devel >= 2.22.01
+BuildRequires:	libgnomeui-devel >= 2.22.1
 BuildRequires:	libtool
-BuildRequires:	nautilus-devel >= 2.22.0
+BuildRequires:	nautilus-devel >= 2.22.2
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -33,8 +33,8 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 Requires:	gnome-vfs2 >= 2.22.0
-Requires:	libgnomeui >= 2.22.01
-Requires:	nautilus-libs >= 2.22.0
+Requires:	libgnomeui >= 2.22.1
+Requires:	nautilus-libs >= 2.22.2
 Suggests:	bzip2
 Suggests:	gzip
 Suggests:	p7zip

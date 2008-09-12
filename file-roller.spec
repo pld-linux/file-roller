@@ -2,12 +2,13 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.23.91
+Version:	2.23.92
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.23/%{name}-%{version}.tar.bz2
-# Source0-md5:	c18d39e47b0ee1c80ac49709e8b20eef
+# Source0-md5:	fe64e84b19fcb245a2c08f73ba978677
+# http://bugzilla.gnome.org/show_bug.cgi?id=552031
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0

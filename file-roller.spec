@@ -2,13 +2,13 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.22.4
+Version:	2.24.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	9cbd597f6e1299f49c7963a1eb2b7533
-Patch0:		%{name}-desktop.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.24/%{name}-%{version}.tar.bz2
+# Source0-md5:	f0ccbf549e6a2d899b8d664c34e2afd2
+# http://bugzilla.gnome.org/show_bug.cgi?id=552031
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	autoconf >= 2.52
@@ -16,7 +16,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-vfs2-devel >= 2.22.0
-BuildRequires:	gtk+2-devel >= 2:2.12.8
+BuildRequires:	gtk+2-devel >= 2:2.13.0
 BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeui-devel >= 2.22.1
@@ -94,10 +94,6 @@ pacote e extrair os arquivos de um pacote.
 
 %prep
 %setup -q
-%patch0 -p1
-
-sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
-mv po/sr@{Latn,latin}.po
 
 %build
 %{__gnome_doc_prepare}

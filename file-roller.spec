@@ -8,7 +8,6 @@ License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.24/%{name}-%{version}.tar.bz2
 # Source0-md5:	f0ccbf549e6a2d899b8d664c34e2afd2
-# http://bugzilla.gnome.org/show_bug.cgi?id=552031
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	autoconf >= 2.52

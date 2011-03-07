@@ -100,7 +100,7 @@ pacote e extrair os arquivos de um pacote.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-schemas-install \
+	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static
 

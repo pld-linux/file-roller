@@ -94,8 +94,6 @@ pacote e extrair os arquivos de um pacote.
 
 %prep
 %setup -q
-sed -i 's/^en@shaw//' po/LINGUAS
-rm po/en@shaw.po
 
 %build
 %{__gnome_doc_prepare}
@@ -118,10 +116,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
 
 # the same locale as ur
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
 
 %find_lang %{name} --with-gnome --with-omf
 

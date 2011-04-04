@@ -2,38 +2,34 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	2.32.1
-Release:	2
+Version:	3.0.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	15da607b23d200f9e7681ddaeecbb76d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	88ef90af3753a7715c437c8e2977be38
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf >= 2.61
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gtk+2-devel >= 2:2.22.0
+BuildRequires:	gtk+3-devel >= 3.0.2
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	nautilus-devel >= 2.26.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	scrollkeeper
+BuildRequires:	rpmbuild(macros) >= 1.601
 # libegg
 BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	hicolor-icon-theme
-Requires(post,postun):	scrollkeeper
-Requires(post,preun):	GConf2
 Requires:	glib2 >= 1:2.26.0
+Requires:	hicolor-icon-theme
 Requires:	nautilus-libs >= 2.26.0
 Suggests:	bzip2
 Suggests:	gzip
@@ -104,7 +100,7 @@ pacote e extrair os arquivos de um pacote.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-schemas-install \
+	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static
 
@@ -116,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
 
 # the same locale as ur
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
@@ -127,28 +123,27 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install file-roller.schemas
-%scrollkeeper_update_post
 %update_desktop_database_post
 %update_icon_cache hicolor
-
-%preun
-%gconf_schema_uninstall file-roller.schemas
+%glib_compile_schemas
 
 %postun
-%scrollkeeper_update_postun
 %update_desktop_database_postun
 %update_icon_cache hicolor
+%glib_compile_schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/file-roller
-%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-fileroller.so
+%attr(755,root,root) %{_libexecdir}/file-roller-server
+%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
 %dir %{_libdir}/file-roller
 %attr(755,root,root) %{_libdir}/file-roller/isoinfo.sh
 %attr(755,root,root) %{_libdir}/file-roller/rpm2cpio
+%{_datadir}/GConf/gsettings/file-roller.convert
+%{_datadir}/dbus-1/services/org.gnome.FileRoller.service
 %{_datadir}/file-roller
+%{_datadir}/glib-2.0/schemas/org.gnome.FileRoller.gschema.xml
 %{_desktopdir}/file-roller.desktop
 %{_iconsdir}/hicolor/*/apps/file-roller.*
-%{_sysconfdir}/gconf/schemas/file-roller.schemas

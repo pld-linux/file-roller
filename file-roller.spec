@@ -2,18 +2,18 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.0.2
+Version:	3.2.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	d125b1ab72554f9e67292d2e2a44bb56
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.2/%{name}-%{version}.tar.xz
+# Source0-md5:	2988077f21d5900757342a96da281b0a
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.61
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.29.14
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gtk+3-devel >= 3.0.2
@@ -28,7 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	glib2 >= 1:2.26.0
+Requires:	glib2 >= 1:2.29.14
 Requires:	hicolor-icon-theme
 Requires:	nautilus-libs >= 2.26.0
 Suggests:	bzip2

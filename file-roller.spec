@@ -2,22 +2,23 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.4.2
+Version:	3.6.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	1264798f38a87b4104734715f113fc0f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	23b3514c2df2eab3bbe8d8b246e1b20c
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.30.0
-BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gtk+3-devel >= 3.0.2
+BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	intltool >= 0.40.0
+BuildRequires:	json-glib-devel >= 0.14.0
+BuildRequires:	libarchive-devel >= 3.0.0
+BuildRequires:	libnotify-devel >= 0.4.3
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	nautilus-devel >= 2.26.0
@@ -26,6 +27,7 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
 # libegg
 BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.30.0
@@ -92,7 +94,6 @@ pacote e extrair os arquivos de um pacote.
 %setup -q
 
 %build
-%{__gnome_doc_prepare}
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
@@ -136,7 +137,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/file-roller
-%attr(755,root,root) %{_libexecdir}/file-roller-server
 %attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
 %dir %{_libdir}/file-roller
 %attr(755,root,root) %{_libdir}/file-roller/isoinfo.sh

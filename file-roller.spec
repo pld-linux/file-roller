@@ -2,12 +2,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.8.0
+Version:	3.8.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	ea6836364741c6ee7e39ecd50a24feaa
+# Source0-md5:	e28ef39cd5ae7461bd9ac181ab81283f
 Patch0:		%{name}-magic.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.68

@@ -2,20 +2,20 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.8.3
+Version:	3.10.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	ff3229109799eaa2ee0b60fd4a8e23ca
-Patch0:		%{name}-magic.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	f630a6c520b1d4aff10b9e7612a31485
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.68
 BuildRequires:	automake >= 1:1.11
+BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.30.0
-BuildRequires:	gtk+3-devel >= 3.6.0
+BuildRequires:	glib2-devel >= 1:2.36.0
+BuildRequires:	gtk+3-devel >= 3.9.3
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	json-glib-devel >= 0.14.0
 BuildRequires:	libarchive-devel >= 3.0.0
@@ -98,7 +98,6 @@ pacote e extrair os arquivos de um pacote.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -123,8 +122,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
-# the same locale as ur
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
 
 %find_lang %{name} --with-gnome
 

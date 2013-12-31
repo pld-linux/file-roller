@@ -1,9 +1,13 @@
+#
+# Conditional build:
+%bcond_without	nautilus	# Nautilus extension
+#
 Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
 Version:	3.10.2.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.10/%{name}-%{version}.tar.xz
@@ -23,24 +27,24 @@ BuildRequires:	libmagic-devel
 BuildRequires:	libnotify-devel >= 0.4.3
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-progs
-BuildRequires:	nautilus-devel >= 2.26.0
+%{?with_nautilus:BuildRequires:	nautilus-devel >= 2.26.0}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.30.0
+Requires(post,postun):	glib2 >= 1:2.36.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	glib2 >= 1:2.30.0
-Requires:	gtk+3 >= 3.6.0
+Requires:	glib2 >= 1:2.36.0
+Requires:	gtk+3 >= 3.9.3
 Requires:	hicolor-icon-theme
 Requires:	json-glib >= 0.14.0
 Requires:	libarchive >= 3.0.0
 Requires:	libnotify >= 0.4.3
-Requires:	nautilus-libs >= 2.26.0
 Suggests:	bzip2
 Suggests:	gzip
+Suggests:	nautilus-extension-file-roller = %{version}-%{release}
 Suggests:	p7zip
 %ifarch %{ix86}
 Suggests:	rar
@@ -96,6 +100,21 @@ ambiente GNOME. Com ele é possível criar arquivos, visualizar o
 conteúdo de arquivos existentes, visualizar um arquivo contido em um
 pacote e extrair os arquivos de um pacote.
 
+%package -n nautilus-extension-file-roller
+Summary:	File Roller (archive manager) extension for Nautilus (GNOME file manager)
+Summary(pl.UTF-8):	Rozszerzenie File Roller (zarządca archiwów) Nautilusa (zarządcy plików GNOME)
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+Requires:	nautilus >= 2.26.0
+
+%description -n nautilus-extension-file-roller
+File Roller (archive manager) extension for Nautilus (GNOME file
+manager).
+
+%description -n nautilus-extension-file-roller -l pl.UTF-8
+Rozszerzenie File Roller (zarządca archiwów) Nautilusa (zarządcy
+plików GNOME).
+
 %prep
 %setup -q
 
@@ -107,6 +126,7 @@ pacote e extrair os arquivos de um pacote.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{!?with_nautilus:--disable-nautilus-actions} \
 	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static
@@ -119,7 +139,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%if %{with nautilus}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
+%endif
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
@@ -142,7 +164,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README README_COMMANDLINE
 %attr(755,root,root) %{_bindir}/file-roller
-%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
 %dir %{_libdir}/file-roller
 %attr(755,root,root) %{_libdir}/file-roller/isoinfo.sh
 %attr(755,root,root) %{_libdir}/file-roller/rpm2cpio
@@ -152,3 +173,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.gnome.FileRoller.gschema.xml
 %{_desktopdir}/file-roller.desktop
 %{_iconsdir}/hicolor/*/apps/file-roller.*
+
+%if %{with nautilus}
+%files -n nautilus-extension-file-roller
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
+%endif

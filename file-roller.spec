@@ -6,12 +6,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.12.2
+Version:	3.14.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	408e3bfc9616f6688ac7854c512b7dfa
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	4899bd0714fe558f6c5f5fc6acd819cd
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.68
 BuildRequires:	automake >= 1:1.11
@@ -19,7 +19,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.36.0
-BuildRequires:	gtk+3-devel >= 3.9.3
+BuildRequires:	gtk+3-devel >= 3.13.3
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	json-glib-devel >= 0.14.0
 BuildRequires:	libarchive-devel >= 3.0.0
@@ -31,13 +31,12 @@ BuildRequires:	libxml2-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
-BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.36.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.36.0
-Requires:	gtk+3 >= 3.9.3
+Requires:	gtk+3 >= 3.13.3
 Requires:	hicolor-icon-theme
 Requires:	json-glib >= 0.14.0
 Requires:	libarchive >= 3.0.0
@@ -168,6 +167,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/file-roller/isoinfo.sh
 %attr(755,root,root) %{_libdir}/file-roller/rpm2cpio
 %{_datadir}/GConf/gsettings/file-roller.convert
+/usr/share/appdata/org.gnome.FileRoller.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.FileRoller.service
 %{_datadir}/dbus-1/services/org.gnome.FileRoller.ArchiveManager1.service
 %{_datadir}/file-roller

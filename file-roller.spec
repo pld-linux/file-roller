@@ -6,12 +6,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.14.1
+Version:	3.14.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.14/%{name}-%{version}.tar.xz
-# Source0-md5:	8b2d75bdf50e27a5f63e6202ba270ce2
+# Source0-md5:	2a0b940e136485c2efb704e62c171e85
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.68
 BuildRequires:	automake >= 1:1.11
@@ -167,7 +167,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/file-roller/isoinfo.sh
 %attr(755,root,root) %{_libdir}/file-roller/rpm2cpio
 %{_datadir}/GConf/gsettings/file-roller.convert
-/usr/share/appdata/org.gnome.FileRoller.appdata.xml
+%{_datadir}/appdata/org.gnome.FileRoller.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.FileRoller.service
 %{_datadir}/dbus-1/services/org.gnome.FileRoller.ArchiveManager1.service
 %{_datadir}/file-roller

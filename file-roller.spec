@@ -1,17 +1,13 @@
-#
-# Conditional build:
-%bcond_without	nautilus	# Nautilus extension
-#
 Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.20.2
+Version:	3.22.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	f0601c889e692f64594517c93dacdcde
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.22/%{name}-%{version}.tar.xz
+# Source0-md5:	e50e7f0e6e0458f7d20288a7d76f02b6
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.68
 BuildRequires:	automake >= 1:1.11
@@ -27,7 +23,6 @@ BuildRequires:	libmagic-devel
 BuildRequires:	libnotify-devel >= 0.4.3
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-progs
-%{?with_nautilus:BuildRequires:	nautilus-devel >= 2.26.0}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
@@ -43,7 +38,6 @@ Requires:	libarchive >= 3.0.0
 Requires:	libnotify >= 0.4.3
 Suggests:	bzip2
 Suggests:	gzip
-Suggests:	nautilus-extension-file-roller = %{version}-%{release}
 Suggests:	p7zip
 %ifarch %{ix86}
 Suggests:	rar
@@ -52,6 +46,7 @@ Suggests:	unrar
 %endif
 Suggests:	tar
 Suggests:	zip
+Obsoletes:	nautilus-extension-file-roller
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -99,33 +94,17 @@ ambiente GNOME. Com ele é possível criar arquivos, visualizar o
 conteúdo de arquivos existentes, visualizar um arquivo contido em um
 pacote e extrair os arquivos de um pacote.
 
-%package -n nautilus-extension-file-roller
-Summary:	File Roller (archive manager) extension for Nautilus (GNOME file manager)
-Summary(pl.UTF-8):	Rozszerzenie File Roller (zarządca archiwów) Nautilusa (zarządcy plików GNOME)
-Group:		X11/Applications
-Requires:	%{name} = %{version}-%{release}
-Requires:	nautilus >= 2.26.0
-
-%description -n nautilus-extension-file-roller
-File Roller (archive manager) extension for Nautilus (GNOME file
-manager).
-
-%description -n nautilus-extension-file-roller -l pl.UTF-8
-Rozszerzenie File Roller (zarządca archiwów) Nautilusa (zarządcy
-plików GNOME).
-
 %prep
 %setup -q
 
 %build
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_nautilus:--disable-nautilus-actions} \
 	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static
@@ -137,10 +116,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-%if %{with nautilus}
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
-%endif
 
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
@@ -175,9 +150,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/org.gnome.FileRoller.desktop
 %{_iconsdir}/hicolor/*x*/apps/file-roller.png
 %{_iconsdir}/hicolor/scalable/apps/file-roller-symbolic.svg
-
-%if %{with nautilus}
-%files -n nautilus-extension-file-roller
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
-%endif

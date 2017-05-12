@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	nautilus	# Nautilus extension
+#
 Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
@@ -23,7 +27,7 @@ BuildRequires:	libmagic-devel
 BuildRequires:	libnotify-devel >= 0.4.3
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-progs
-BuildRequires:	nautilus-devel
+%{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0.0}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.601
@@ -120,6 +124,7 @@ plików GNOME).
 %{__autoheader}
 %{__automake}
 %configure \
+	%{!?with_nautilus:--disable-nautilus-actions} \
 	--disable-schemas-compile \
 	--disable-silent-rules \
 	--disable-static
@@ -132,8 +137,11 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
+%if %{with nautilus}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
+%endif
+
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
 
 %find_lang %{name} --with-gnome
 
@@ -167,6 +175,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/apps/file-roller.png
 %{_iconsdir}/hicolor/scalable/apps/file-roller-symbolic.svg
 
+%if %{with nautilus}
 %files -n nautilus-extension-file-roller
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
+%endif

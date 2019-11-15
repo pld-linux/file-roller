@@ -1,0 +1,24 @@
+--- file-roller-3.32.2/data/packages.match.orig	2019-09-09 20:42:41.000000000 +0200
++++ file-roller-3.32.2/data/packages.match	2019-11-15 16:16:16.405840102 +0100
+@@ -5,17 +5,17 @@
+ bzip2=
+ cpio=
+ dpkg=
+-genisoimage=
++genisoimage=cdrkit-mkisofs
+ gzip=
+ lha=
+ lrzip=
+ lzip=
+-lzma=
++lzma=xz
+ lzop=
+ ncompress=
+ p7zip=
+-p7zip-full=
+-p7zip-rar=
++p7zip-full=p7zip
++p7zip-rar=p7zip
+ rar=
+ rpm=
+ rzip=

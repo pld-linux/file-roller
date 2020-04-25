@@ -6,27 +6,26 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.32.3
+Version:	3.36.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.32/%{name}-%{version}.tar.xz
-# Source0-md5:	5e098bb254d34f48a9b5761b468f4240
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.36/%{name}-%{version}.tar.xz
+# Source0-md5:	caa0103ab34d237a9760fbf5e1c72bc1
 Patch0:		%{name}-packages.patch
 URL:		https://wiki.gnome.org/Apps/FileRoller
 BuildRequires:	desktop-file-utils
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.36.0
-BuildRequires:	gtk+3-devel >= 3.13.3
+BuildRequires:	glib2-devel >= 1:2.38
+BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	json-glib-devel >= 0.14.0
 BuildRequires:	libarchive-devel >= 3.0.0
-BuildRequires:	libmagic-devel
 BuildRequires:	libnotify-devel >= 0.4.3
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-progs
-BuildRequires:	meson >= 0.43
-%{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0.0}
+BuildRequires:	meson >= 0.50
+%{?with_nautilus:BuildRequires:	nautilus-devel >= 3.28.0}
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
@@ -35,10 +34,10 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.36.0
+Requires(post,postun):	glib2 >= 1:2.38
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	glib2 >= 1:2.36.0
-Requires:	gtk+3 >= 3.13.3
+Requires:	glib2 >= 1:2.38
+Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 Requires:	json-glib >= 0.14.0
 Requires:	libarchive >= 3.0.0
@@ -103,7 +102,7 @@ Summary:	File Roller (archive manager) extension for Nautilus (GNOME file manage
 Summary(pl.UTF-8):	Rozszerzenie File Roller (zarządca archiwów) Nautilusa (zarządcy plików GNOME)
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	nautilus >= 3.0.0
+Requires:	nautilus >= 3.28.0
 
 %description -n nautilus-extension-file-roller
 File Roller (archive manager) extension for Nautilus (GNOME file
@@ -147,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS MAINTAINERS NEWS README README_COMMANDLINE
+%doc AUTHORS MAINTAINERS NEWS README.md README_COMMANDLINE
 %attr(755,root,root) %{_bindir}/file-roller
 %dir %{_libexecdir}/file-roller
 %attr(755,root,root) %{_libexecdir}/file-roller/isoinfo.sh
@@ -159,6 +158,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/metainfo/org.gnome.FileRoller.appdata.xml
 %{_desktopdir}/org.gnome.FileRoller.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.ArchiveManager.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.ArchiveManager.Devel.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.ArchiveManager-symbolic.svg
 
 %if %{with nautilus}

@@ -6,12 +6,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.36.2
+Version:	3.36.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/file-roller/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	caa0103ab34d237a9760fbf5e1c72bc1
+# Source0-md5:	1cadd4b42837d848e5d2da191f4112d6
 Patch0:		%{name}-packages.patch
 URL:		https://wiki.gnome.org/Apps/FileRoller
 BuildRequires:	desktop-file-utils

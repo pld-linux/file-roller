@@ -6,12 +6,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.38.1
+Version:	3.40.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/file-roller/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	53583aeb16a89185b132af4e9dc96db2
+Source0:	https://download.gnome.org/sources/file-roller/3.40/%{name}-%{version}.tar.xz
+# Source0-md5:	b38c3eaea9aba5f44d2701fa23a7a0ff
 Patch0:		%{name}-packages.patch
 URL:		https://wiki.gnome.org/Apps/FileRoller
 BuildRequires:	desktop-file-utils
@@ -20,7 +20,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.38
 BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	json-glib-devel >= 0.14.0
-BuildRequires:	libarchive-devel >= 3.0.0
+BuildRequires:	libarchive-devel >= 3.2.0
 BuildRequires:	libnotify-devel >= 0.4.3
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-progs
@@ -40,7 +40,7 @@ Requires:	glib2 >= 1:2.38
 Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 Requires:	json-glib >= 0.14.0
-Requires:	libarchive >= 3.0.0
+Requires:	libarchive >= 3.2.0
 Requires:	libnotify >= 0.4.3
 Suggests:	bzip2
 Suggests:	gzip
@@ -151,8 +151,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}/file-roller
 %attr(755,root,root) %{_libexecdir}/file-roller/isoinfo.sh
 %attr(755,root,root) %{_libexecdir}/file-roller/rpm2cpio
+%{_datadir}/dbus-1/services/org.gnome.ArchiveManager1.service
 %{_datadir}/dbus-1/services/org.gnome.FileRoller.service
-%{_datadir}/dbus-1/services/org.gnome.FileRoller.ArchiveManager1.service
 %{_datadir}/file-roller
 %{_datadir}/glib-2.0/schemas/org.gnome.FileRoller.gschema.xml
 %{_datadir}/metainfo/org.gnome.FileRoller.appdata.xml

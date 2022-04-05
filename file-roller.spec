@@ -6,12 +6,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	3.40.0
+Version:	3.42.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/file-roller/3.40/%{name}-%{version}.tar.xz
-# Source0-md5:	b38c3eaea9aba5f44d2701fa23a7a0ff
+Source0:	https://download.gnome.org/sources/file-roller/3.42/%{name}-%{version}.tar.xz
+# Source0-md5:	c7564ff0532df8b7379a46c895ab4fcd
 Patch0:		%{name}-packages.patch
 URL:		https://wiki.gnome.org/Apps/FileRoller
 BuildRequires:	desktop-file-utils
@@ -21,8 +21,8 @@ BuildRequires:	glib2-devel >= 1:2.38
 BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	json-glib-devel >= 0.14.0
 BuildRequires:	libarchive-devel >= 3.2.0
+BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libnotify-devel >= 0.4.3
-BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-progs
 BuildRequires:	meson >= 0.50
 %{?with_nautilus:BuildRequires:	nautilus-devel >= 3.28.0}
@@ -41,6 +41,7 @@ Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 Requires:	json-glib >= 0.14.0
 Requires:	libarchive >= 3.2.0
+Requires:	libhandy1 >= 1.5.0
 Requires:	libnotify >= 0.4.3
 Suggests:	bzip2
 Suggests:	gzip

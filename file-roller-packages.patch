@@ -1,6 +1,16 @@
---- file-roller-3.32.2/data/packages.match.orig	2019-09-09 20:42:41.000000000 +0200
-+++ file-roller-3.32.2/data/packages.match	2019-11-15 16:16:16.405840102 +0100
-@@ -5,17 +5,17 @@
+--- file-roller-43.0/data/packages.match.orig	2023-05-18 22:57:11.319556933 +0200
++++ file-roller-43.0/data/packages.match	2023-05-18 22:59:06.448933223 +0200
+@@ -1,20 +1,20 @@
+ [Package Matches]
+-7zip=
+-7zip-full=
+-7zip-rar=
++7zip=p7zip
++7zip-full=p7zip
++7zip-rar=p7zip
+ arj=
+ binutils=
+ brotli=
  bzip2=
  cpio=
  dpkg=
@@ -9,16 +19,10 @@
  gzip=
  lha=
  lrzip=
+ lz4=
  lzip=
 -lzma=
 +lzma=xz
  lzop=
  ncompress=
- p7zip=
--p7zip-full=
--p7zip-rar=
-+p7zip-full=p7zip
-+p7zip-rar=p7zip
  rar=
- rpm=
- rzip=

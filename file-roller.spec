@@ -1,3 +1,4 @@
+# TODO: use gtk4-update-icon-theme
 #
 # Conditional build:
 %bcond_with	apidocs		# API documentation (API not packaged, so disabled for now)
@@ -8,12 +9,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	43.1
+Version:	44.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/file-roller/43/%{name}-%{version}.tar.xz
-# Source0-md5:	a36e8f27b0793e044652c5bfa187851d
+Source0:	https://download.gnome.org/sources/file-roller/44/%{name}-%{version}.tar.xz
+# Source0-md5:	8732ec45e5918d092232974f0549ae84
 Patch0:		%{name}-packages.patch
 URL:		https://wiki.gnome.org/Apps/FileRoller
 BuildRequires:	cpio
@@ -23,12 +24,12 @@ BuildRequires:	gettext-tools
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 BuildRequires:	glib2-devel >= 1:2.38
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk+3-devel >= 3.22.0
+BuildRequires:	gtk4-devel >= 4.8.1
 BuildRequires:	json-glib-devel >= 0.14.0
+BuildRequires:	libadwaita-devel >= 1.2
 BuildRequires:	libarchive-devel >= 3.2.0
-BuildRequires:	libhandy1-devel >= 1.5.0
 %{?with_libportal:BuildRequires:	libportal-devel >= 0.5}
-%{?with_libportal:BuildRequires:	libportal-gtk3-devel >= 0.5}
+%{?with_libportal:BuildRequires:	libportal-gtk4-devel >= 0.5}
 BuildRequires:	meson >= 0.59
 %{?with_nautilus:BuildRequires:	nautilus-devel >= 43}
 BuildRequires:	ninja >= 1.5
@@ -42,11 +43,11 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.38
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.38
-Requires:	gtk+3 >= 3.22.0
+Requires:	gtk4 >= 4.8.1
 Requires:	hicolor-icon-theme
 Requires:	json-glib >= 0.14.0
+Requires:	libadwaita >= 1.2
 Requires:	libarchive >= 3.2.0
-Requires:	libhandy1 >= 1.5.0
 Suggests:	bzip2
 Suggests:	cpio
 Suggests:	gzip

@@ -9,12 +9,12 @@ Summary:	An archive manager for GNOME
 Summary(pl.UTF-8):	Zarządca archiwów dla GNOME
 Summary(pt_BR.UTF-8):	Gerenciador de arquivos compactados para o GNOME
 Name:		file-roller
-Version:	44.3
+Version:	44.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/file-roller/44/%{name}-%{version}.tar.xz
-# Source0-md5:	8f309a2af9788b2291512bdf0cd76ffd
+# Source0-md5:	2cd66510a61e0d86597ec09d9c68aea6
 Patch0:		%{name}-packages.patch
 URL:		https://wiki.gnome.org/Apps/FileRoller
 BuildRequires:	cpio
@@ -49,8 +49,10 @@ Requires:	json-glib >= 0.14.0
 Requires:	libadwaita >= 1.2
 Requires:	libarchive >= 3.2.0
 Suggests:	bzip2
+Suggests:	bzip3
 Suggests:	cpio
 Suggests:	gzip
+Suggests:	lzip
 Suggests:	p7zip
 %ifarch %{ix86}
 Suggests:	rar
@@ -58,7 +60,9 @@ Suggests:	rar
 Suggests:	unrar
 %endif
 Suggests:	tar
+Suggests:	xz
 Suggests:	zip
+Suggests:	zstd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

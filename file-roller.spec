@@ -35,7 +35,7 @@ BuildRequires:	meson >= 0.59
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
@@ -128,18 +128,18 @@ plików GNOME).
 %patch -P0 -p1
 
 %build
-%meson build \
+%meson \
 	%{?with_apidocs:-Dapi_docs=enabled} \
 	-Dintrospection=enabled \
 	%{!?with_nautilus:-Dnautilus-actions=disabled} \
 	%{!?with_libportal:-Duse_native_appchooser=false}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 # unify name
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{sr@ije,sr@ijekavian}
